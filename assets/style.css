@@ -1,0 +1,64 @@
+.main-container{
+    margin: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8rem;
+}
+
+.item_title, .post_title{
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+.item_body, .post_body,.label{
+    font-style: italic;
+}
+
+.input_postTitle{
+    width: 15rem;
+    margin-bottom: 1rem;
+    border: 3px solid #ccc;
+    border-radius: 3px;
+}
+.input_postTitle:focus,
+.input_postBody:focus{
+    background-color: rgb(170, 204, 161);
+    color: rgb(60, 86, 60);
+    font-weight: bold;
+    border: 3px solid white;
+
+}
+
+.input_postBody{
+    width: 30rem;
+    height: 6rem;
+    margin-bottom: 1rem;
+    border: 3px solid #ccc;
+    border-radius: 3px;
+}
+
+.main-container_form{
+    display: flex;
+}
+.main-form{
+    display: flex;
+    flex-direction: column;
+}
+.image_grogu{
+    width: 20rem;
+    margin-left: 20rem;
+}
+
+.button_createPost{
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    border-radius: 3px;
+    width: 6rem;
+}
+
+.button_createPost:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+
