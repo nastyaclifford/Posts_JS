@@ -14,25 +14,37 @@ btn.onclick = function (e) {
     title: document.getElementById("postTitle").value,
     body: document.getElementById("postBody").value,
   };
-  fetch("https://jsonplaceholder.typicode.com/posts", {
-    //пишем функцию, которая делает POST-запрос по указанному выше адресу, передает туда свойства из массива, созданного выше
-    method: "POST",
-    body: JSON.stringify(post),
-    headers: {
-      //имеет свойство headers c единственным заголовком, указанным ниже
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((response) => response.json()) //преобразовывает данные в json
-    .then((post) => {
-      //помещает значение из массива, созданного ранее (post) в разметку
-      totalStringVDom =
-        `<div class="post"><div class="post_title">${post.title}</div>
+
+  if (
+    //функция, которая проверяет, заполнены ли все поля
+    document.getElementById("postTitle").value.length === 0 ||
+    document.getElementById("postBody").value.length === 0
+  ) {
+    //и пишет, чтобы проверили и ввели все данные
+    document.querySelector(".postBody_message").innerHTML =
+      "Please enter post TITLE and post TEXT!";
+  } else {
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      //пишем функцию, которая делает POST-запрос по указанному выше адресу, передает туда свойства из массива, созданного выше
+      method: "POST",
+      body: JSON.stringify(post),
+      headers: {
+        //имеет свойство headers c единственным заголовком, указанным ниже
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json()) //преобразовывает данные в json
+      .then((post) => {
+        //помещает значение из массива, созданного ранее (post) в разметку
+        totalStringVDom =
+          `<div class="post"><div class="post_title">${post.title}</div>
       <div class="post_body">${post.body}</div></div>` + totalStringVDom;
-      postsDisplay.innerHTML = totalStringVDom;
-      (document.getElementById("postTitle").value = " "), //очищает поля ввода
-        (document.getElementById("postBody").value = " ");
-    });
+        postsDisplay.innerHTML = totalStringVDom;
+        (document.getElementById("postTitle").value = ""), //очищает поля ввода
+          (document.getElementById("postBody").value = "");
+        document.querySelector(".postBody_message").innerHTML = ""; //удаляет текст о вводе данных
+      });
+  }
 };
 
 //Задание 1 - Нужно получить с сервера список постов и отобразить его на странице.

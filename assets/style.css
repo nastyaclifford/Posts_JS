@@ -60,5 +60,12 @@
     background-color: #4CAF50;
     color: white;
   }
+
+ .postBody_message{
+    font-weight: bold;
+    color: red;
+    margin-bottom: 1rem;
+
+ } 
   
 
